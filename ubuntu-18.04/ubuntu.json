@@ -1,6 +1,7 @@
 {
   "variables": {
-    "ubuntu_iso_file": "ubuntu-18.04.3-server-amd64.iso"
+    "ubuntu_iso_file": "ubuntu-18.04.3-server-amd64.iso",
+    "proxmox_template_name": "ubuntu-18.04-3-server"
   },
   "builders": [{
     "type": "proxmox",
@@ -10,6 +11,7 @@
     "password": "{{ user `proxmox_password` }}",
     "node": "pve-01",
     "network_adapters": [{
+      "model": "virtio",
       "bridge": "vmbr0",
       "vlan_tag": "100"
     }],
@@ -21,6 +23,11 @@
     }],
     "iso_file": "local:iso/{{ user `ubuntu_iso_file` }}",
     "unmount_iso": true,
+    "memory": 4096,
+    "cores": 2,
+    "sockets": 2,
+    "os": "l26",
+    "template_name": "{{ user `proxmox_template_name` }}",
     "http_directory": "config",
     "boot_command": [
       "<esc><wait><esc><wait><enter><wait>",
@@ -32,7 +39,8 @@
       "-- <enter>"
     ],
     "ssh_username": "operador",
-    "ssh_password": "operador"
+    "ssh_password": "operador",
+    "ssh_timeout": "40m"
   }],
   "provisioners": [{
     "type": "shell",

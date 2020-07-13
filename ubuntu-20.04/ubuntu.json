@@ -35,7 +35,7 @@
     ],
     "ssh_username": "operador",
     "ssh_password": "operador",
-    "ssh_timeout": "30m"
+    "ssh_timeout": "40m"
   }],
   "provisioners": [{
     "type": "shell",
