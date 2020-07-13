@@ -5,9 +5,9 @@
         upgrade: dist
         autoremove: true
       become: true
-    - name: Add public SSH key for the Madalynn user
+    - name: Add public SSH key for the Operador user
       authorized_key:
-        user: madalynn
-        key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEXrziuUOCpWPvwOsGuF4K+aq1ufToGMi4ra/1omOZb
+        user: operador 
+        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDoPjHwZhQ0hyrg54Ouv4ltRYUUl35l/NgtBqSU7OlSXKEuo7Gc4QX+SevKmUJ29Sk0I0vW/DmCzE6Gmp889VB9WhdKIit2N47b2zpTug9YQceDb0a9gaP1Wr9A7NPgaXj1as9yt8rRmuZXbDgrmvxz6EUZWkVM2p9BjYIf+VIoJKFpWzCBYAV9HhMYz61WH3C5XHFgqP7qgLrL6swz6i5M+NBeuB7kypLF7mTjwt+zIMt4UmjAYCKm4wIYccgrNX/M3xy4yNfqwX9fw6h6QecO/ekaxgsT7q/xLRnCeKRT6qv3y7RBfA27eMS2yANp5Ka7b1dNHOa0K2rWG3lRAQGw4nOhLWWEkHeDVi8UBNCFGc71Sc98KlG96FzQWgKBrmADaUFdFayf+Yjhr5H+VgwNTtikWJjD9khKy3o2B2Xf9BqZG5QWuzmbuGVDejDwEP0nOgmiKz/MdI4G529Ps5rd4OHz2EFSrHOB15MKaw8oPmm7GdHKEbLB5hQ4Ex0TPFRc7ce3cgZXC9NsM0tqE1y3p2crHeBaA9vC9MW93ZVGeBk4bm30kSA5h6u6PP0u3Oyxl1FnCqRVebT+OkGi2K1N8WE1NRngQQ1l4GunRFKKbI8j8NYxYqR5Gxao4TMjLpLKU/h+oxEBpUDyo5S+4IQJ+NoIypHjV0a7rwRU+hQWkQ== vitor@thinkpad-x250 
         state: present
         exclusive: true

@@ -2,5 +2,5 @@
 
 set -eux
 
-# Enable "madalynn" user sudo without password
-echo "madalynn ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/madalynn
+# Enable "operador" user sudo without password
+echo "operador ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/operador

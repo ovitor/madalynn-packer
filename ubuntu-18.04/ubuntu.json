@@ -1,18 +1,16 @@
 {
   "variables": {
-    "proxmox_vm_id": "200",
-    "proxmox_template_name": "ubuntu-18.04",
-    "ubuntu_iso_file": "ubuntu-18.04.2-server-amd64.iso"
+    "ubuntu_iso_file": "ubuntu-18.04.3-server-amd64.iso"
   },
   "builders": [{
     "type": "proxmox",
-    "proxmox_url": "https://proxmox.madalynn.xyz/api2/json",
+    "proxmox_url": "https://pve-01.quixada.ifce.edu.br/api2/json",
     "username": "{{ user `proxmox_username` }}",
     "password": "{{ user `proxmox_password` }}",
-    "node": "proxmox",
-    "vm_id": "{{ user `proxmox_vm_id` }}",
+    "node": "pve-01",
     "network_adapters": [{
-      "bridge": "vmbr0"
+      "bridge": "vmbr0",
+      "vlan_tag": "100"
     }],
     "disks": [{
       "type": "scsi",
@@ -22,7 +20,6 @@
     }],
     "iso_file": "local:iso/{{ user `ubuntu_iso_file` }}",
     "unmount_iso": true,
-    "template_name": "{{ user `proxmox_template_name` }}",
     "http_directory": "config",
     "boot_command": [
       "<esc><wait><esc><wait><enter><wait>",
@@ -33,12 +30,12 @@
       "priority=critical ",
       "-- <enter>"
     ],
-    "ssh_username": "madalynn",
-    "ssh_password": "madalynn"
+    "ssh_username": "operador",
+    "ssh_password": "operador"
   }],
   "provisioners": [{
     "type": "shell",
-    "execute_command": "echo 'madalynn' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'",
+    "execute_command": "echo 'operador' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'",
     "script": "scripts/setup.sh"
   }, {
     "type": "ansible",
