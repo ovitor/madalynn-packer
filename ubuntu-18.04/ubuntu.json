@@ -4,7 +4,8 @@
   },
   "builders": [{
     "type": "proxmox",
-    "proxmox_url": "https://pve-01.quixada.ifce.edu.br/api2/json",
+    "proxmox_url": "https://pve-01.quixada.ifce.edu.br:8006/api2/json",
+    "insecure_skip_tls_verify": true,
     "username": "{{ user `proxmox_username` }}",
     "password": "{{ user `proxmox_password` }}",
     "node": "pve-01",
@@ -37,8 +38,5 @@
     "type": "shell",
     "execute_command": "echo 'operador' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'",
     "script": "scripts/setup.sh"
-  }, {
-    "type": "ansible",
-    "playbook_file": "./ansible/provisioning.yml"
   }]
 }
