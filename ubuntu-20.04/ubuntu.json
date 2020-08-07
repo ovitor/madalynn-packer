@@ -21,7 +21,7 @@
     }],
     "iso_file": "local:iso/{{ user `ubuntu_iso_file` }}",
     "unmount_iso": true,
-    "boot_wait": "10s",
+    "boot_wait": "4s",
     "memory": 4096,
     "cores": 2,
     "sockets": 2,
@@ -35,12 +35,20 @@
     ],
     "ssh_username": "operador",
     "ssh_password": "operador",
-    "ssh_timeout": "40m"
+    "ssh_timeout": "1h30m"
   }],
-  "provisioners": [{
-    "type": "shell",
-    "inline": [
-      "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done"
-    ]
-  }]
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo $(date) >> /home/operador/time.txt"
+      ]
+    }
+  ]
 }
